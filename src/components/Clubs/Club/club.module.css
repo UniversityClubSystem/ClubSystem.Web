@@ -1,0 +1,21 @@
+.club {
+  width: 35%;
+  display: flex;
+  flex-direction: row !important;
+  align-items: stretch;
+  min-height: 8rem;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all .3s ease;
+  box-shadow: 0 1px 1px 0 rgba(31, 35, 46, 0.15);
+}
+
+.club:hover {
+  transform: translate(0px, -4px);
+  box-shadow: 0 15px 45px -10px rgba(10, 16, 34, 0.2);
+}
+
+.joinButton {
+  border-bottom-left-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+}

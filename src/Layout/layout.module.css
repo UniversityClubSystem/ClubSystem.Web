@@ -1,0 +1,7 @@
+.main {
+  margin-top: 5rem;
+}
+
+:global(a) {
+  color: #fff;
+}
