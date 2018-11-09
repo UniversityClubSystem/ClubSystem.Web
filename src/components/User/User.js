@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
@@ -54,10 +54,7 @@ const User = (props) => {
             <GridListTileBar
               title={tile.title}
               subtitle={(
-                <span>
-                  by:
-                  {tile.author}
-                </span>
+                <span>by: {tile.author}</span>
               )}
               actionIcon={(
                 <IconButton className={classes.icon}>
