@@ -1,13 +1,13 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
+
+import axios from 'axios';
 
 import {withStyles} from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
 
 const styles = theme => ({
   root: {
@@ -27,7 +27,7 @@ const styles = theme => ({
 });
 
 const User = (props) => {
-  const { classes } = props;
+  const {classes} = props;
   const tileData = [
     {
       id: 1,
@@ -42,26 +42,26 @@ const User = (props) => {
       author: 'author2',
     },
   ];
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://localhost:5001/api/user').then(response => {
+      const users = response.data;
+      users.map(user => user.img = tileData[0].img);
+      setUsers(users);
+    });
+  }, []);
+
   return (
     <div className="text-center">
       <GridList cellHeight={180} className={classes.gridList}>
-        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+        <GridListTile key="Subheader" cols={2} style={{height: 'auto'}}>
           <ListSubheader component="div">Users</ListSubheader>
         </GridListTile>
-        {tileData.map(tile => (
-          <GridListTile key={tile.id}>
-            <img src={tile.img} alt={tile.title} width={50} />
-            <GridListTileBar
-              title={tile.title}
-              subtitle={(
-                <span>by: {tile.author}</span>
-              )}
-              actionIcon={(
-                <IconButton className={classes.icon}>
-                  <InfoIcon />
-                </IconButton>
-              )}
-            />
+        {users.map(user => (
+          <GridListTile key={user.id}>
+            <img src={user.img} alt={user.name} width={50}/>
+            <GridListTileBar title={user.name}/>
           </GridListTile>
         ))}
       </GridList>
