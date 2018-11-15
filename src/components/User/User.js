@@ -5,7 +5,6 @@ import {withStyles} from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import ListSubheader from '@material-ui/core/ListSubheader';
 
 import axios from 'axios';
 
@@ -19,8 +18,9 @@ const styles = theme => ({
   },
   gridList: {
     display: 'flex',
-    justifyContent: 'center',
-    width: 500,
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    width: 250,
     height: 350,
   }
 });
@@ -45,22 +45,21 @@ const User = (props) => {
 
   useEffect(() => {
     axios.get('https://localhost:5001/api/user')
-      .then(response => {
-        const users = response.data;
-        users.map(user => user.img = tileData[0].img);
-        setUsers(users);
+      .then((response) => {
+        response.data.map(user => user.img = tileData[0].img);
+        setUsers(response.data);
       });
   }, []);
 
   return (
     <div className="text-center border border-primary">
-      <GridList cellHeight={180} className={classes.gridList}>
-        <GridListTile key="Subheader" cols={2} style={{height: 'auto'}}>
-          <ListSubheader component="div">Users</ListSubheader>
-        </GridListTile>
+      <GridList cellHeight={100} className={classes.gridList}>
+        {/*<GridListTile key="Subheader" cols={1} style={{ height: 'auto' }}>*/}
+        {/*<ListSubheader component="div">Users</ListSubheader>*/}
+        {/*</GridListTile>*/}
         {users.map(user => (
           <GridListTile key={user.id}>
-            <img src={user.img} alt={user.name} width={50}/>
+            <img src={user.img} alt={user.name} width={60}/>
             <GridListTileBar title={user.name}/>
           </GridListTile>
         ))}

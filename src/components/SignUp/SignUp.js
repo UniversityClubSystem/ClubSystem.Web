@@ -20,17 +20,21 @@ const SignUp = () => {
       case 'password':
         setPassword(data);
         break;
+      default:
+        console.log('default');
     }
   }
 
   function submit() {
     console.log('submit');
-    axios.post('https://localhost:5001/api/user', {
-      name,
-      email,
-      password,
-      userClubs
-    }).then(response => console.log(response));
+    axios
+      .post('https://localhost:5001/api/user', {
+        name,
+        email,
+        password,
+        userClubs
+      })
+      .then(response => console.log(response));
   }
 
   return (
@@ -38,25 +42,48 @@ const SignUp = () => {
       <form className="d-flex flex-column w-25">
         <div className="form-group py-2">
           <label htmlFor="inputName">Username</label>
-          <input type="text" className="form-control" value={name} onChange={handleChange} name="name" id="inputName"
-                 aria-describedby="nameHelp"
-                 placeholder="Enter name"/>
+          <input
+            type="text"
+            className="form-control"
+            value={name}
+            onChange={handleChange}
+            name="name"
+            id="inputName"
+            aria-describedby="nameHelp"
+            placeholder="Enter name"
+          />
         </div>
         <div className="form-group py-2">
           <label htmlFor="inputEmail">Email address</label>
-          <input type="email" className="form-control" value={email} onChange={handleChange} name="email"
-                 id="inputEmail" aria-describedby="emailHelp"
-                 placeholder="Enter email"/>
+          <input
+            type="email"
+            className="form-control"
+            value={email}
+            onChange={handleChange}
+            name="email"
+            id="inputEmail"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+          />
         </div>
         <div className="form-group py-2">
           <label htmlFor="inputPassword">Password</label>
-          <input type="password" className="form-control" value={password} onChange={handleChange} name="password"
-                 id="inputPassword" placeholder="Password"/>
+          <input
+            type="password"
+            className="form-control"
+            value={password}
+            onChange={handleChange}
+            name="password"
+            id="inputPassword"
+            placeholder="Password"
+          />
         </div>
-        <button type="button" className="btn btn-primary" onClick={submit}>Submit</button>
+        <button type="button" className="btn btn-primary" onClick={submit}>
+          Submit
+        </button>
       </form>
     </div>
-  )
+  );
 };
 
 export default SignUp;
