@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 
-import axios from 'axios';
-
 import {withStyles} from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
+
+import axios from 'axios';
 
 const styles = theme => ({
   root: {
@@ -18,12 +18,11 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
+    display: 'flex',
+    justifyContent: 'center',
     width: 500,
     height: 350,
-  },
-  icon: {
-    color: 'rgba(255, 255, 255, 0.54)',
-  },
+  }
 });
 
 const User = (props) => {
@@ -45,15 +44,16 @@ const User = (props) => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('https://localhost:5001/api/user').then(response => {
-      const users = response.data;
-      users.map(user => user.img = tileData[0].img);
-      setUsers(users);
-    });
+    axios.get('https://localhost:5001/api/user')
+      .then(response => {
+        const users = response.data;
+        users.map(user => user.img = tileData[0].img);
+        setUsers(users);
+      });
   }, []);
 
   return (
-    <div className="text-center">
+    <div className="text-center border border-primary">
       <GridList cellHeight={180} className={classes.gridList}>
         <GridListTile key="Subheader" cols={2} style={{height: 'auto'}}>
           <ListSubheader component="div">Users</ListSubheader>

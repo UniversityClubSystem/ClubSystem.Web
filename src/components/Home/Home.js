@@ -1,30 +1,31 @@
 import React from 'react';
 
-import User from '../User/User';
-import Club from '../Club/Club';
+import {Route} from "react-router-dom";
+
 import Navbar from '../Navbar/Navbar';
+import User from "../User/User";
+import Club from "../Club/Club";
+import SignUp from "../SignUp/SignUp";
 
 import './Home.scss';
 
 const Home = () => (
   <div className="container">
     <div className="row">
-      <div className="col-sm-12">
-        <Navbar />
-      </div>
+      <Navbar/>
+    </div>
+    <div className="row justify-content-center">
+      <h1>Home</h1>
+    </div>
+
+    <div className="row">
+      <Route path="/users" component={User}/>
     </div>
     <div className="row">
-      <div className="col-sm-12">
-        <h1>Home</h1>
-      </div>
+      <Route path="/clubs" component={Club}/>
     </div>
     <div className="row">
-      <div className="col-sm-6">
-        <User />
-      </div>
-      <div className="col-sm-6">
-        <Club />
-      </div>
+      <Route path="/signUp" component={SignUp}/>
     </div>
   </div>
 );
