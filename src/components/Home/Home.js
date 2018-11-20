@@ -8,17 +8,11 @@ import Club from '../Club/Club';
 import SignUp from '../SignUp/SignUp';
 import Login from '../Login/Login';
 
-import './Home.scss';
-
 const Home = () => (
   <div className="container">
     <div className="row">
       <Navbar />
     </div>
-    <div className="row justify-content-center">
-      <h1>Home</h1>
-    </div>
-
     <div className="row">
       <Route path="/users" component={User} />
     </div>

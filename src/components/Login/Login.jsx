@@ -25,6 +25,10 @@ const styles = theme => ({
     background: '#D3D3D3',
     borderRadius: 20,
   },
+  title: {
+    fontSize: 20,
+    textTransform: 'italic'
+  },
   name: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
@@ -53,18 +57,40 @@ const styles = theme => ({
 
 const Login = (props) => {
   const { classes } = props;
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  function handleLogin() {
+    const user = {
+      name: username,
+      password
+    };
+    fetch('https://localhost:5001/api/login', {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+      redirect: 'follow',
+      referrer: 'no-referrer',
+      body: JSON.stringify(user),
+    }).then(response => console.log(response));
+  }
 
   return (
     <div className={classes.container}>
       <form className={classes.form}>
+        <p className={classes.title}>
+          Login
+        </p>
         <TextField
           id="name"
           label="Name"
           className={classes.name}
-          value={name}
-          onChange={e => setName(e.target.value)}
+          value={username}
+          onChange={e => setUsername(e.target.value)}
           margin="normal"
         />
         <TextField
@@ -76,7 +102,7 @@ const Login = (props) => {
           onChange={e => setPassword(e.target.value)}
           margin="normal"
         />
-        <Button variant="contained" color="primary" className={classes.button}>
+        <Button variant="contained" color="primary" className={classes.button} onClick={handleLogin}>
           Login
         </Button>
         <Link to="forgotPassword" className={classes.forgotPassword}>
