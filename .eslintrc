@@ -5,6 +5,8 @@
     "react/forbid-prop-types": 0,
     "no-console": "off",
     "comma-dangle": "off",
+    "no-return-assign": "off",
+    "no-param-reassign": "off",
     "jsx-a11y/label-has-associated-control": [
       "error",
       {
