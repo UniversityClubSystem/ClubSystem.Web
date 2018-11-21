@@ -12,7 +12,7 @@ const styles = theme => ({
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
-    marginTop: theme.spacing.unit * 20
+    marginTop: theme.spacing.unit * 10
   },
   form: {
     display: 'flex',
@@ -62,10 +62,10 @@ const Login = (props) => {
 
   function handleLogin() {
     const user = {
-      name: username,
+      username,
       password
     };
-    fetch('https://localhost:5001/api/login', {
+    fetch('https://localhost:5001/api/user/login', {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache',

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 
-import axios from 'axios';
-
 const SignUp = () => {
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userClubs, setUserClubs] = useState([]);
@@ -12,7 +10,7 @@ const SignUp = () => {
     const data = event.target.value;
     switch (event.target.name) {
       case 'name':
-        setName(data);
+        setUsername(data);
         break;
       case 'email':
         setEmail(data);
@@ -27,14 +25,24 @@ const SignUp = () => {
 
   function submit() {
     console.log('submit');
-    axios
-      .post('https://localhost:5001/api/user', {
-        name,
-        email,
-        password,
-        userClubs
-      })
-      .then(response => console.log(response));
+    const user = {
+      username,
+      email,
+      password,
+      userClubs
+    };
+    fetch('https://localhost:5001/api/user', {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+      redirect: 'follow',
+      referrer: 'no-referrer',
+      body: JSON.stringify(user),
+    }).then(response => console.log(response));
   }
 
   return (
@@ -45,7 +53,7 @@ const SignUp = () => {
           <input
             type="text"
             className="form-control"
-            value={name}
+            value={username}
             onChange={handleChange}
             name="name"
             id="inputName"
