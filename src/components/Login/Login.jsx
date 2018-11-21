@@ -65,7 +65,7 @@ const Login = (props) => {
       username,
       password
     };
-    fetch('https://localhost:5001/api/user/login', {
+    fetch('/api/user/login', {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache',

@@ -31,7 +31,7 @@ const SignUp = () => {
       password,
       userClubs
     };
-    fetch('https://localhost:5001/api/user', {
+    fetch('/api/user', {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache',

@@ -49,7 +49,7 @@ const User = (props) => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('https://localhost:5001/api/user')
+    axios.get('/api/user')
       .then((response) => {
         response.data.map(user => user.img = tileData[0].img);
         setUsers(response.data);
