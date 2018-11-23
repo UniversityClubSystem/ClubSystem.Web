@@ -5,7 +5,6 @@
   "dependencies": {
     "@material-ui/core": "^3.3.2",
     "@material-ui/icons": "^3.0.1",
-    "axios": "^0.18.0",
     "eslint-config-airbnb": "17.1.0",
     "node-sass": "^4.10.0",
     "prop-types": "^15.6.2",
@@ -22,7 +21,7 @@
     "lint": "eslint '**/*.{js,jsx}' --quiet",
     "lint-fix": "eslint '**/*.{js,jsx}' --quiet --fix"
   },
-  "proxy": "http://localhost:5001",
+  "proxy": "https://localhost:5001",
   "eslintConfig": {
     "extends": "react-app"
   },

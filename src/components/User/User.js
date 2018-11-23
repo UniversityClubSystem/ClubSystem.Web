@@ -5,10 +5,6 @@ import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
-
-import axios from 'axios';
 
 const styles = theme => ({
   root: {
@@ -24,10 +20,7 @@ const styles = theme => ({
     flexDirection: 'column',
     width: 250,
     height: 350,
-  },
-  button: {
-    margin: theme.spacing.unit,
-  },
+  }
 });
 
 const User = (props) => {
@@ -49,27 +42,21 @@ const User = (props) => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/user')
-      .then((response) => {
-        response.data.map(user => user.img = tileData[0].img);
-        setUsers(response.data);
+    fetch('/api/user')
+      .then(response => response.json())
+      .then((json) => {
+        json.map(user => user.img = tileData[0].img);
+        setUsers(json);
       });
   }, []);
 
-  function addUser() {
-    console.log('addUser');
-  }
-
   return (
     <div className="text-center border border-primary">
-      <Button className={classes.button} onClick={addUser} variant="contained" color="primary" aria-label="Add">
-        <AddIcon />
-      </Button>
       <GridList cellHeight={100} className={classes.gridList}>
         {users.map(user => (
           <GridListTile key={user.id}>
-            <img src={user.img} alt={user.name} width={60} />
-            <GridListTileBar title={user.name} />
+            <img src={user.img} alt={user.userName} width={60} />
+            <GridListTileBar title={user.userName} />
           </GridListTile>
         ))}
       </GridList>
