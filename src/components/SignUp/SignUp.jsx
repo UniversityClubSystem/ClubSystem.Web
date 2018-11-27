@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
+
+import axios from 'axios';
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userClubs, setUserClubs] = useState([]);
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   function handleChange(event) {
     const data = event.target.value;
@@ -31,18 +35,14 @@ const SignUp = () => {
       password,
       userClubs
     };
-    fetch('/api/user', {
-      method: 'POST',
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-      },
-      redirect: 'follow',
-      referrer: 'no-referrer',
-      body: JSON.stringify(user),
-    }).then(response => console.log(response));
+    axios.post('/api/user', user).then((response) => {
+      console.log(response);
+      if (response.status === 200) setIsSignedIn(true);
+    });
+  }
+
+  if (isSignedIn) {
+    return <Redirect to="/login" />;
   }
 
   return (

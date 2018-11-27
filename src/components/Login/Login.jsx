@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+import Loader from 'react-loader';
+import axios from 'axios';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -22,8 +25,9 @@ const styles = theme => ({
     flexWrap: 'wrap',
     width: 380,
     height: 370,
-    background: '#D3D3D3',
-    borderRadius: 20,
+    // background: '#D3D3D3',
+    border: '1px solid #DFE0E2',
+    borderRadius: 10,
   },
   title: {
     fontSize: 20,
@@ -52,6 +56,18 @@ const styles = theme => ({
   },
   forgotPassword: {
     marginTop: theme.spacing.unit * 2
+  },
+  loader: {
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    background: 'white',
+    zIndex: 9999,
+  },
+  invalidPassword: {
+    color: 'red'
   }
 });
 
@@ -59,29 +75,35 @@ const Login = (props) => {
   const { classes } = props;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loginResponse, setLoginResponse] = useState({});
+  const [loaded, setLoaded] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   function handleLogin() {
+    setLoaded(false);
     const user = {
       username,
       password
     };
-    fetch('/api/user/login', {
-      method: 'POST',
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-      },
-      redirect: 'follow',
-      referrer: 'no-referrer',
-      body: JSON.stringify(user),
-    }).then(response => console.log(response));
+    axios.post('/api/user/login', user).then((response) => {
+      console.log('response:', response);
+      setLoaded(true);
+      setLoginResponse(response);
+      if (response.status === 200) setIsLoggedIn(true);
+    }).catch(() => {
+      setLoaded(true);
+    });
+  }
+
+  if (isLoggedIn) {
+    return <Redirect to="/dashboard" />;
   }
 
   return (
     <div className={classes.container}>
+      {/* <form onSubmit={handleSubmit} className={classes.form}> */}
       <form className={classes.form}>
+        <Loader className={classes.loader} loaded={loaded} />
         <p className={classes.title}>
           Login
         </p>
@@ -102,6 +124,11 @@ const Login = (props) => {
           onChange={e => setPassword(e.target.value)}
           margin="normal"
         />
+        {
+          loginResponse.ok === false
+            ? <p className={classes.invalidPassword}>Invalid email or password</p>
+            : null
+        }
         <Button variant="contained" color="primary" className={classes.button} onClick={handleLogin}>
           Login
         </Button>
