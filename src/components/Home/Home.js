@@ -2,11 +2,12 @@ import React from 'react';
 
 import { Route } from 'react-router-dom';
 
-import Navbar from 'components/Navbar/Navbar';
-import User from 'components/User/User';
-import Club from 'components/Club/Club';
-import SignUp from 'components/SignUp/SignUp';
-import Login from 'components/Login/Login';
+import Navbar from '../Navbar/Navbar';
+import User from '../User/User';
+import Club from '../Club/Club';
+import SignUp from '../SignUp/SignUp';
+import Login from '../Login/Login';
+import Dashboard from '../Dashboard/Dashboard';
 
 const Home = () => (
   <div className="container">
@@ -24,6 +25,9 @@ const Home = () => (
     </div>
     <div className="row">
       <Route path="/login" component={Login} />
+    </div>
+    <div className="row">
+      <Route path="/dashboard" component={Dashboard} />
     </div>
   </div>
 );

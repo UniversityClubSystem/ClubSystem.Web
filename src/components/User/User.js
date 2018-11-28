@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import axios from 'axios';
+
 import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -40,13 +42,14 @@ const User = (props) => {
     },
   ];
   const [users, setUsers] = useState([]);
+  const [token, setToken] = useState('');
 
   useEffect(() => {
-    fetch('/api/user')
-      .then(response => response.json())
-      .then((json) => {
-        json.map(user => user.img = tileData[0].img);
-        setUsers(json);
+    axios.get('/api/user', { headers: { Authorization: token } })
+      .then((response) => {
+        console.log(response);
+        response.map(user => user.img = tileData[0].img);
+        setUsers(response);
       });
   }, []);
 

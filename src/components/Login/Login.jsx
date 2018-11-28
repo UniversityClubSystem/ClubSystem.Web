@@ -75,9 +75,13 @@ const Login = (props) => {
   const { classes } = props;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loginResponse, setLoginResponse] = useState({});
+  const [loginResponse, setLoginResponse] = useState({ ok: true });
   const [loaded, setLoaded] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  function saveTokenToLocalStorage(token) {
+    localStorage.setItem('token', token);
+  }
 
   function handleLogin() {
     setLoaded(false);
@@ -89,8 +93,11 @@ const Login = (props) => {
       console.log('response:', response);
       setLoaded(true);
       setLoginResponse(response);
+      saveTokenToLocalStorage(response.data);
       if (response.status === 200) setIsLoggedIn(true);
-    }).catch(() => {
+    }).catch((error) => {
+      console.log('error:', error);
+      setLoginResponse(error);
       setLoaded(true);
     });
   }
@@ -125,7 +132,7 @@ const Login = (props) => {
           margin="normal"
         />
         {
-          loginResponse.ok === false
+          !loginResponse.ok
             ? <p className={classes.invalidPassword}>Invalid email or password</p>
             : null
         }
