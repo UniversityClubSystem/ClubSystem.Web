@@ -2,16 +2,16 @@ import React from 'react';
 
 import { Route } from 'react-router-dom';
 
-import Navbar from '../Navbar/Navbar';
-import User from '../User/User';
-import Club from '../Club/Club';
-import SignUp from '../SignUp/SignUp';
-import Login from '../Login/Login';
-import Dashboard from '../Dashboard/Dashboard';
+// import Navbar from '../Navbar/Navbar';
+// import User from '../User/User';
+// import Club from '../Club/Club';
+// import SignUp from '../SignUp/SignUp';
+// import Login from '../Login/Login';
+// import Dashboard from '../Dashboard/Dashboard';
 
 const Home = () => (
   <div className="container">
-    <div className="row">
+    {/* <div className="row">
       <Navbar />
     </div>
     <div className="row">
@@ -28,7 +28,7 @@ const Home = () => (
     </div>
     <div className="row">
       <Route path="/dashboard" component={Dashboard} />
-    </div>
+    </div> */}
   </div>
 );
 

@@ -1,15 +1,14 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
-
-import Home from 'components/Home/Home';
+import Layout from './components/NewStructure/Layout/Layout';
 
 const App = () => (
   <React.Fragment>
     <CssBaseline />
     <BrowserRouter>
-      <Route path="/" component={Home} />
+      <Layout />
     </BrowserRouter>
   </React.Fragment>
 );

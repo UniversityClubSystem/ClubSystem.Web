@@ -71,7 +71,7 @@ const styles = theme => ({
   }
 });
 
-const Login = (props) => {
+const SignIn = (props) => {
   const { classes } = props;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -147,8 +147,8 @@ const Login = (props) => {
   );
 };
 
-Login.propTypes = {
+SignIn.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Login);
+export default withStyles(styles)(SignIn);
