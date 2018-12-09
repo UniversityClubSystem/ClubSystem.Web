@@ -1,30 +1,31 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
+import { setGlobal } from "reactn";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
-import { setGlobal } from 'reactn';
+import Layout from "./Layout/Layout";
+import {
+  SignIn,
+  Dashboard,
+  SignUp,
+  ResetPassword,
+  User,
+  Club
+} from "components/index";
+import FullPost from "./components/Posts/FullPost/FullPost";
+import PrivateRoute from "./Utils/PrivateRoute";
 
-import CssBaseline from '@material-ui/core/CssBaseline';
+const private1 = () => <p>private1</p>;
 
-import Layout from './Layout/Layout';
-import SignIn from './components/SignIn/SignIn';
-import Dashboard from './components/Dashboard/Dashboard';
-import SignUp from './components/SignUp/SignUp';
-import PrivateRoute from './Utils/PrivateRoute';
-import ResetPassword from './components/ResetPassword/ResetPassword';
-import User from './components/User/User';
-import Club from './components/Club/Club';
-import FullPost from './components/Posts/FullPost/FullPost';
-
-const private1 = () => (
-  <p>private1</p>
-);
-
-const private2 = () => (
-  <p>private2</p>
-);
+const private2 = () => <p>private2</p>;
 
 const App = () => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
   setGlobal({
     isSignedIn: !!token,
     token
