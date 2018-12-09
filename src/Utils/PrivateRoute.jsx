@@ -1,22 +1,25 @@
-import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import { useGlobal } from 'reactn';
+import React, { Component } from "react";
+import { Redirect, Route } from "react-router-dom";
+import { useGlobal } from "reactn";
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  const [isSignedIn] = useGlobal('isSignedIn');
+const checkIsSignedIn = (isSignedIn, props) => {
+  if (isSignedIn) return <Component {...props} />;
 
   return (
-    <Route
-      {...rest}
-      render={props =>
-        isSignedIn
-          ? <Component {...props} />
-          : <Redirect to={{
-            pathname: '/signIn',
-            state: { from: props.location }
-          }} />
-      }
+    <Redirect
+      to={{
+        pathname: "/signIn",
+        state: { from: props.location }
+      }}
     />
+  );
+};
+
+const PrivateRoute = ({ component, ...rest }) => {
+  const [isSignedIn] = useGlobal("isSignedIn");
+
+  return (
+    <Route {...rest} render={props => checkIsSignedIn(isSignedIn, props)} />
   );
 };
 
