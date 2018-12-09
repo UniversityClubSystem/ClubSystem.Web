@@ -1,14 +1,13 @@
-import React from "react";
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect
-} from "react-router-dom";
-import { setGlobal } from "reactn";
-import CssBaseline from "@material-ui/core/CssBaseline";
+} from 'react-router-dom';
+import { setGlobal } from 'reactn';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
-import Layout from "./Layout/Layout";
 import {
   SignIn,
   Dashboard,
@@ -16,16 +15,17 @@ import {
   ResetPassword,
   User,
   Club
-} from "components/index";
-import FullPost from "./components/Posts/FullPost/FullPost";
-import PrivateRoute from "./Utils/PrivateRoute";
+} from './components/index';
+import Layout from './Layout/Layout';
+import FullPost from './components/Posts/FullPost/FullPost';
+import PrivateRoute from './Utils/PrivateRoute';
 
 const private1 = () => <p>private1</p>;
 
 const private2 = () => <p>private2</p>;
 
 const App = () => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
   setGlobal({
     isSignedIn: !!token,
     token
