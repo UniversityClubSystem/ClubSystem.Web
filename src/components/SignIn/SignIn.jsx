@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { useGlobal } from 'reactn';
+
 import Loader from 'react-loader';
 import axios from 'axios';
 
@@ -54,7 +56,7 @@ const styles = theme => ({
     width: 170,
     height: 40,
   },
-  forgotPassword: {
+  resetPassword: {
     marginTop: theme.spacing.unit * 2
   },
   loader: {
@@ -72,38 +74,45 @@ const styles = theme => ({
 });
 
 const SignIn = (props) => {
-  const { classes } = props;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginResponse, setLoginResponse] = useState({ ok: true });
   const [loaded, setLoaded] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { classes, location } = props;
+
+  const { from } = location.state || { from: { pathname: '/dashboard' } };
+  const [isSignedIn, setIsSignedIn] = useGlobal('isSignedIn');
+  console.log('global state - isSignedIn:', isSignedIn);
 
   function saveTokenToLocalStorage(token) {
-    localStorage.setItem('token', token);
+    window.localStorage.setItem('token', token);
   }
 
   function handleLogin() {
+    const user = { username, password };
     setLoaded(false);
-    const user = {
-      username,
-      password
-    };
     axios.post('/api/user/login', user).then((response) => {
-      console.log('response:', response);
       setLoaded(true);
       setLoginResponse(response);
       saveTokenToLocalStorage(response.data);
-      if (response.status === 200) setIsLoggedIn(true);
+      if (response.status === 200) {
+        setIsSignedIn(true);
+      }
     }).catch((error) => {
-      console.log('error:', error);
       setLoginResponse(error);
       setLoaded(true);
     });
   }
 
-  if (isLoggedIn) {
-    return <Redirect to="/dashboard" />;
+  function onKeyPress(event) {
+    if (event.key === 'Enter') {
+      handleLogin();
+      event.preventDefault();
+    }
+  }
+
+  if (isSignedIn) {
+    return <Redirect to={from} />;
   }
 
   return (
@@ -111,9 +120,7 @@ const SignIn = (props) => {
       {/* <form onSubmit={handleSubmit} className={classes.form}> */}
       <form className={classes.form}>
         <Loader className={classes.loader} loaded={loaded} />
-        <p className={classes.title}>
-          Login
-        </p>
+        <p className={classes.title}>Login</p>
         <TextField
           id="name"
           label="Name"
@@ -129,6 +136,7 @@ const SignIn = (props) => {
           className={classes.password}
           value={password}
           onChange={e => setPassword(e.target.value)}
+          onKeyPress={ev => onKeyPress(ev)}
           margin="normal"
         />
         {
@@ -139,8 +147,8 @@ const SignIn = (props) => {
         <Button variant="contained" color="primary" className={classes.button} onClick={handleLogin}>
           Login
         </Button>
-        <Link to="forgotPassword" className={classes.forgotPassword}>
-          Forgot password?
+        <Link to="resetPassword" className={classes.resetPassword}>
+          Reset password
         </Link>
       </form>
     </div>
@@ -149,6 +157,7 @@ const SignIn = (props) => {
 
 SignIn.propTypes = {
   classes: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(SignIn);

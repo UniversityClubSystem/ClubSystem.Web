@@ -28,7 +28,11 @@
           ]
         }
       }
-    ]
+    ],
+    "no-confusing-arrow": "off",
+    "implicit-arrow-linebreak": "off",
+    "react/jsx-closing-bracket-location": "off",
+    "react/jsx-wrap-multilines": "off"
   },
   "env": {
     "browser": true,
