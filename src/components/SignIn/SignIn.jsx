@@ -52,7 +52,6 @@ const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
     marginTop: theme.spacing.unit * 3,
-    borderRadius: 10,
     width: 170,
     height: 40,
   },

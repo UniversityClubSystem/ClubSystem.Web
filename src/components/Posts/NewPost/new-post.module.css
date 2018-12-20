@@ -1,0 +1,28 @@
+.container {
+  margin-top: 50px;
+}
+
+.title {
+  text-align: center;
+  width: 50%;
+}
+
+.postTitle {
+  width: 50%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.text {
+  width: 50%;
+}
+
+.button {
+  width: 30%;
+}

@@ -1,39 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+import axios from 'axios';
+
 import styles from './posts.module.css';
 
 import SimplePost from './SimplePost/SimplePost';
 
 const Posts = () => {
-  const posts = [
-    {
-      text: 'lorem ipsum',
-      createdDate: '2018/12/4',
-      createdBy: '1',
-      identifier: '21312-2412'
-    },
-    {
-      text: 'apsum lorem',
-      createdDate: '2018/12/5',
-      createdBy: '4',
-      identifier: '2gs4G-13fFD'
-    },
-    {
-      text: 'asdasd dsag',
-      createdDate: '2018/9/5',
-      createdBy: '4',
-      identifier: 'ass4G-13fFD'
-    },
-    {
-      text: 'apsum lorem',
-      createdDate: '2017/12/5',
-      createdBy: '9',
-      identifier: '2gs4G-a2r2'
-    }
-  ];
+  const token = window.localStorage.getItem('token');
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/post', {
+      headers: { Authorization: `Bearer ${token}` }
+    }).then((postsResponse) => {
+      setPosts(postsResponse.data);
+    });
+  }, []);
+
   return (
     <div className={styles.container}>
       {posts.map(post => (
-        <SimplePost key={post.identifier} post={post} />
+        <SimplePost key={post.id} post={post} />
       ))}
     </div>
   );
