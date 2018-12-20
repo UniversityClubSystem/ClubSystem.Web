@@ -42,7 +42,7 @@ const User = (props) => {
     },
   ];
   const [users, setUsers] = useState([]);
-  const [token, setToken] = useState('');
+  const token = window.localStorage.getItem('token');
 
   useEffect(() => {
     axios.get('/api/user', { headers: { Authorization: token } })

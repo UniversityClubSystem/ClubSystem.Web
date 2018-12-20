@@ -14,7 +14,8 @@ import {
   SignUp,
   ResetPassword,
   User,
-  Club
+  Club,
+  NewPost
 } from './components/index';
 import Layout from './Layout/Layout';
 import FullPost from './components/Posts/FullPost/FullPost';
@@ -44,6 +45,7 @@ const App = () => {
             <PrivateRoute path="/users" component={User} />
             <PrivateRoute path="/clubs" component={Club} />
             <PrivateRoute path="/post/:id" component={FullPost} />
+            <PrivateRoute path="/new-post" component={NewPost} />
             <PrivateRoute path="/private1" component={private1} />
             <PrivateRoute path="/private2" component={private2} />
             <Route path="*" render={() => <p>Not Found :(</p>} />
