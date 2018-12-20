@@ -89,7 +89,7 @@ const SignIn = (props) => {
   }
 
   function handleLogin() {
-    const user = { username, password };
+    const user = { username, passwordHash: password };
     setLoaded(false);
     axios.post('/api/user/login', user).then((response) => {
       setLoaded(true);
@@ -117,7 +117,6 @@ const SignIn = (props) => {
 
   return (
     <div className={classes.container}>
-      {/* <form onSubmit={handleSubmit} className={classes.form}> */}
       <form className={classes.form}>
         <Loader className={classes.loader} loaded={loaded} />
         <p className={classes.title}>Login</p>
