@@ -33,7 +33,7 @@
     "implicit-arrow-linebreak": "off",
     "react/jsx-closing-bracket-location": "off",
     "react/jsx-wrap-multilines": "off",
-    "max-len": ["error", { "code": 150 }]
+    "max-len": ["error", { "code": 200 }]
   },
   "env": {
     "browser": true,
