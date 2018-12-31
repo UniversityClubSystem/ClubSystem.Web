@@ -19,10 +19,20 @@
 
 }
 
-.text {
+.content {
   width: 50%;
 }
 
 .button {
   width: 30%;
+}
+
+.clubFormControl {
+  margin-top: 15px !important;
+}
+
+.club {
+  min-width: 150px;
+  width: 20vw;
+  margin-bottom: 40px;
 }

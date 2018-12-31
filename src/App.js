@@ -15,7 +15,8 @@ import {
   ResetPassword,
   User,
   Club,
-  NewPost
+  NewPost,
+  NewClub
 } from './components/index';
 import Layout from './Layout/Layout';
 import FullPost from './components/Posts/FullPost/FullPost';
@@ -43,9 +44,10 @@ const App = () => {
             <Redirect exact from="/" to="/dashboard" />
             <PrivateRoute path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/users" component={User} />
-            <PrivateRoute path="/clubs" component={Club} />
+            <PrivateRoute exact path="/clubs" component={Club} />
             <PrivateRoute path="/post/:id" component={FullPost} />
-            <PrivateRoute path="/new-post" component={NewPost} />
+            <PrivateRoute path="/posts/new" component={NewPost} />
+            <PrivateRoute path="/clubs/new" component={NewClub} />
             <PrivateRoute path="/private1" component={private1} />
             <PrivateRoute path="/private2" component={private2} />
             <Route path="*" render={() => <p>Not Found :(</p>} />

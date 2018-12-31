@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
 
 import axios from 'axios';
 
@@ -13,18 +17,32 @@ import styles from './new-post.module.css';
 
 const NewPost = () => {
   const [title, setTitle] = useState('');
-  const [text, setText] = useState('');
+  const [content, setContent] = useState('');
   const [postVisibility, setPostVisibility] = useState(true);
+  const [clubId, setClubId] = useState('');
+  const [clubs, setClubs] = useState([]);
   const token = window.localStorage.getItem('token');
 
-  function handleSave() {
-    const newPost = { title, text };
+  useEffect(() => {
+    axios
+      .get('/api/club/byUser/current', {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then((response) => {
+        setClubs(response.data);
+      });
+  }, []);
 
-    axios.post('/api/post', newPost, {
-      headers: { Authorization: `Bearer ${token}` }
-    }).then((response) => {
-      console.log(response);
-    });
+  function handleSave() {
+    const newPost = { title, content, clubId };
+
+    axios
+      .post('/api/post', newPost, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then((response) => {
+        console.log(response);
+      });
   }
 
   const containerClass = classNames(styles.container, { container: 'container' });
@@ -43,16 +61,16 @@ const NewPost = () => {
           margin="normal"
         />
         <TextField
-          className={styles.text}
-          id="text"
+          className={styles.content}
+          id="content"
           label="Post Content"
           type="text"
           multiline
           variant="outlined"
           rows="12"
           placeholder="Please enter post content"
-          value={text}
-          onChange={e => setText(e.target.value)}
+          value={content}
+          onChange={e => setContent(e.target.value)}
           margin="normal"
         />
         <FormControlLabel
@@ -65,6 +83,26 @@ const NewPost = () => {
           }
           label="Public"
         />
+        <FormControl className={styles.clubFormControl}>
+          <InputLabel htmlFor="club">Which club do you want to send from?</InputLabel>
+          <Select
+            className={styles.club}
+            value={clubId}
+            onChange={event => setClubId(event.target.value)}
+            inputProps={{
+              name: 'club',
+              id: 'club',
+            }}
+          >
+            {clubs.map(_club => (
+              <MenuItem
+                key={_club.id}
+                value={_club.id}>
+                {_club.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
         <Button
           className={styles.button}
           variant="contained"
