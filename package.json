@@ -1,7 +1,31 @@
 {
   "name": "club-system.web",
+  "description": "Club System Web UI",
   "version": "0.1.0",
   "private": true,
+  "license": "GPL-3.0",
+  "proxy": "https://localhost:5001",
+  "author": {
+    "name": "Ömrüm Baki Temiz",
+    "email": "omrumbakitemiz@gmail.com",
+    "url": "http://github.com/omrumbakitemiz"
+  },
+  "contributors": [],
+  "keywords": [],
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "NODE_PATH=src react-scripts build",
+    "test": "NODE_PATH=src react-scripts test",
+    "eject": "NODE_PATH=src react-scripts eject",
+    "lint": "eslint '**/*.{js,jsx}' --quiet",
+    "lint-fix": "eslint '**/*.{js,jsx}' --quiet --fix"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "dependencies": {
     "@material-ui/core": "^3.7.0",
     "@material-ui/icons": "^3.0.1",
@@ -17,28 +41,72 @@
     "react-scripts": "2.1.1",
     "reactn": "^0.1.6"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "NODE_PATH=src react-scripts build",
-    "test": "NODE_PATH=src react-scripts test",
-    "eject": "NODE_PATH=src react-scripts eject",
-    "lint": "eslint '**/*.{js,jsx}' --quiet",
-    "lint-fix": "eslint '**/*.{js,jsx}' --quiet --fix"
-  },
-  "proxy": "https://localhost:5001",
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "devDependencies": {
     "babel-plugin-root-import": "^6.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.0"
+  },
+  "eslintConfig": {
+    "extends": "airbnb",
+    "rules": {
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ],
+      "react/forbid-prop-types": 0,
+      "no-console": "off",
+      "comma-dangle": "off",
+      "no-return-assign": "off",
+      "no-param-reassign": "off",
+      "jsx-a11y/label-has-associated-control": [
+        "error",
+        {
+          "required": {
+            "some": [
+              "nesting",
+              "id"
+            ]
+          }
+        }
+      ],
+      "jsx-a11y/label-has-for": [
+        "error",
+        {
+          "required": {
+            "some": [
+              "nesting",
+              "id"
+            ]
+          }
+        }
+      ],
+      "no-confusing-arrow": "off",
+      "implicit-arrow-linebreak": "off",
+      "react/jsx-closing-bracket-location": "off",
+      "react/jsx-wrap-multilines": "off",
+      "max-len": [
+        "error",
+        {
+          "code": 200
+        }
+      ]
+    },
+    "env": {
+      "browser": true,
+      "node": true
+    }
+  },
+  "babel": {
+    "plugins": [
+      [
+        "babel-plugin-root-import"
+      ]
+    ]
   }
 }
