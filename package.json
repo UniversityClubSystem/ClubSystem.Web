@@ -38,7 +38,7 @@
     "react-dom": "^16.7.0-alpha.0",
     "react-loader": "^2.4.5",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1",
+    "react-scripts": "2.1.2",
     "reactn": "^0.1.6"
   },
   "devDependencies": {
