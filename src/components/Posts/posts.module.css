@@ -1,4 +1,11 @@
-.container {
+.posts-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }

@@ -13,7 +13,7 @@ const NavigationItems = () => {
   }
 
   return (
-    <nav className="w-100 navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="w-100 navbar navbar-expand-lg">
       <Link className="navbar-brand" to="/">
         Club System
       </Link>
@@ -60,7 +60,7 @@ const NavigationItems = () => {
             </Link>
           ) : null}
           {isSignedIn ? (
-            <Button className="nav-item nav-link my-2 my-lg-0" onClick={handleSignOut}>
+            <Button className="nav-item nav-link my-2 my-lg-0 text-white" onClick={handleSignOut}>
               Sign Out
             </Button>
           ) : null}

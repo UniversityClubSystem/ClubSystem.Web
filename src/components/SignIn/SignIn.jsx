@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { useGlobal } from 'reactn';
 
-import Loader from 'react-loader';
+import Loader from 'react-loaders';
 import axios from 'axios';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -117,7 +117,7 @@ const SignIn = (props) => {
   return (
     <div className={classes.container}>
       <form className={classes.form}>
-        <Loader className={classes.loader} loaded={loaded} />
+        <Loader type="ball-pulse" active={!loaded} />
         <p className={classes.title}>Login</p>
         <TextField
           id="name"
@@ -155,7 +155,7 @@ const SignIn = (props) => {
 
 SignIn.propTypes = {
   classes: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
+  location: PropTypes.object
 };
 
 export default withStyles(styles)(SignIn);
