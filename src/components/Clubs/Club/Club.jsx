@@ -1,0 +1,57 @@
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+
+import Button from '@material-ui/core/Button';
+
+import classNames from 'classnames';
+
+import styles from './club.module.css';
+
+const Club = (props) => {
+  console.log(props);
+  const { club } = props;
+  const clubStyle = styles.club;
+  const gridBox = classNames('col-xs-12 card bg-light m-3', clubStyle);
+
+  function clubClickHandler(id, event) {
+    console.log(event);
+    if (event) {
+      if (event.key === 'Enter') {
+        props.history.push({
+          pathname: `/clubs/${id}/join`,
+          state: { club }
+        });
+      }
+    } else {
+      props.history.push({
+        pathname: `/clubs/${id}/join`,
+        state: { club }
+      });
+    }
+  }
+
+  club.createdDate = new Date(Date.parse(club.createdDate));
+  const date = `${club.createdDate.getFullYear()}/${(club.createdDate.getMonth() + 1)}/${(club.createdDate.getUTCDate())}`;
+
+  return (
+    <div role="button" tabIndex={0} onKeyPress={event => clubClickHandler(club.id, event)} onClick={() => clubClickHandler(club.id)} className={gridBox}>
+      <div className="card-body">
+        <h5 className="card-title">
+          {club.name}
+        </h5>
+        <h6 className="card-subtitle mb-2 mt-2 text-muted">
+          Founded:
+          {date}
+        </h6>
+        <p className="card-text">
+          {club.universityName}
+        </p>
+      </div>
+      <Button variant="contained" color="primary" className={styles.joinButton} onClick={() => console.log('onClick')}>
+        Join Club
+      </Button>
+    </div>
+  );
+};
+
+export default withRouter(Club);

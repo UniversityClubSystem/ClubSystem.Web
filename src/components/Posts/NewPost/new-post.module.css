@@ -3,10 +3,9 @@
 }
 
 .title {
-  margin-top: 15px;
+  margin-top: 1rem;
   font-size: 1.6rem;
   font-weight: bold;
-  font-style: italic;
   text-align: center;
   width: 50%;
 }
@@ -43,5 +42,4 @@
 .loader {
   display: flex;
   justify-content: center;
-  margin-top: 6rem;
 }

@@ -1,4 +1,6 @@
-export { default as Club } from './Clubs/Club';
+export { default as Clubs } from './Clubs/Clubs';
+export { default as FullClub } from './Clubs/FullClub/FullClub';
+export { default as JoinClub } from './Clubs/JoinClub/JoinClub';
 export { default as User } from './User/User';
 export { default as Dashboard } from './Dashboard/Dashboard';
 export { default as ResetPassword } from './ResetPassword/ResetPassword';

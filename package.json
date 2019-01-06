@@ -35,7 +35,7 @@
     "lint": "eslint '**/*.{js,jsx}' --quiet",
     "lint-fix": "eslint '**/*.{js,jsx}' --quiet --fix"
   },
-  "proxy": "https://clubsystemapi.herokuapp.com",
+  "proxy": "https://localhost:5001",
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -60,6 +60,7 @@
           ]
         }
       ],
+      "react/prop-types": 0,
       "react/forbid-prop-types": 0,
       "no-console": "off",
       "comma-dangle": "off",

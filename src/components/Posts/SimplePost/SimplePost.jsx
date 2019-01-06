@@ -32,7 +32,7 @@ const SimplePost = (props) => {
   return (
     <div role="button" tabIndex={0} onKeyPress={event => postClickHandler(post.id, event)} onClick={() => postClickHandler(post.id)} className={gridBox}>
       <div className="card-body">
-        <h5 className="card-title">
+        <h5 className="card-title ">
           {post.title}
         </h5>
         <h5 className="card-title">

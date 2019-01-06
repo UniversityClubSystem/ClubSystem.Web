@@ -61,11 +61,13 @@ const NewPost = () => {
 
   return (
     <div className={containerClass}>
-      <div className={styles.loader}>
-        <Loader type="ball-pulse" active={!loaderStatus} />
-      </div>
       <form className={styles.form}>
         <p className={styles.title}>Create New Club Post</p>
+
+        <div className={styles.loader}>
+          <Loader type="ball-pulse" active={!loaderStatus} />
+        </div>
+
         <TextField
           className={styles.postTitle}
           id="title"
