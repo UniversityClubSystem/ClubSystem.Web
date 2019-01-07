@@ -1,0 +1,45 @@
+.container {
+  margin-top: 50px;
+}
+
+.title {
+  margin-top: 1rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  width: 50%;
+}
+
+.postTitle {
+  width: 50%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 50%;
+}
+
+.button {
+  width: 30%;
+}
+
+.clubFormControl {
+  margin-top: 15px !important;
+}
+
+.club {
+  min-width: 150px;
+  width: 25vw;
+  margin-bottom: 40px;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+}

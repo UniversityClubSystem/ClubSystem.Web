@@ -1,17 +1,65 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom';
+import { setGlobal } from 'reactn';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import Home from 'components/Home/Home';
+import {
+  SignIn,
+  Dashboard,
+  SignUp,
+  ResetPassword,
+  User,
+  FullClub,
+  Clubs,
+  NewPost,
+  JoinClub,
+  NewClub
+} from './components/index';
+import Layout from './Layout/Layout';
+import FullPost from './components/Posts/FullPost/FullPost';
+import PrivateRoute from './Utils/PrivateRoute';
 
-const App = () => (
-  <React.Fragment>
-    <CssBaseline />
-    <BrowserRouter>
-      <Route path="/" component={Home} />
-    </BrowserRouter>
-  </React.Fragment>
-);
+const private1 = () => <p>private1</p>;
+
+const private2 = () => <p>private2</p>;
+
+const App = () => {
+  const token = localStorage.getItem('token');
+  setGlobal({
+    isSignedIn: !!token,
+    token
+  });
+  return (
+    <>
+      <CssBaseline />
+      <Router>
+        <Layout>
+          <Switch>
+            <Route path="/signIn" component={SignIn} />
+            <Route path="/signUp" component={SignUp} />
+            <Route path="/resetPassword" component={ResetPassword} />
+            <Redirect exact from="/" to="/dashboard" />
+            <PrivateRoute path="/dashboard" component={Dashboard} />
+            <PrivateRoute path="/users" component={User} />
+            <PrivateRoute exact path="/clubs" component={Clubs} />
+            <PrivateRoute path="/post/:id" component={FullPost} />
+            <PrivateRoute path="/posts/new" component={NewPost} />
+            <PrivateRoute path="/clubs/new" component={NewClub} />
+            <PrivateRoute path="/clubs/:id/join" component={JoinClub} />
+            <PrivateRoute exact path="/clubs/:id" component={FullClub} />
+            <PrivateRoute path="/private1" component={private1} />
+            <PrivateRoute path="/private2" component={private2} />
+            <Route path="*" render={() => <p>Not Found :(</p>} />
+          </Switch>
+        </Layout>
+      </Router>
+    </>
+  );
+};
 
 export default App;

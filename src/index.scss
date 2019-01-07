@@ -1,3 +1,12 @@
+$primary-color: rgb(64,84,178);
+@import '~loaders.css/src/animations/ball-pulse';
+
+.loader-hidden {
+  display: none;
+}
+.loader-active {
+  display: block;
+}
 
 html {
   box-sizing: border-box;

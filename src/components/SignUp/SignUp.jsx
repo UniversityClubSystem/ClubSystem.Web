@@ -7,7 +7,7 @@ const SignUp = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [userClubs, setUserClubs] = useState([]);
+  const [userClubs] = useState([]);
   const [isSignedIn, setIsSignedIn] = useState(false);
 
   function handleChange(event) {
@@ -32,7 +32,7 @@ const SignUp = () => {
     const user = {
       username,
       email,
-      password,
+      passwordHash: password,
       userClubs
     };
     axios.post('/api/user', user).then((response) => {

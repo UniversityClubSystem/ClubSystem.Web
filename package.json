@@ -1,32 +1,41 @@
 {
   "name": "club-system.web",
-  "version": "0.1.0",
+  "description": "Club System Web UI",
+  "version": "0.0.1",
   "private": true,
+  "license": "GPL-3.0",
+  "author": {
+    "name": "Ömrüm Baki Temiz",
+    "email": "omrumbakitemiz@icloud.com",
+    "url": "http://github.com/omrumbakitemiz"
+  },
+  "contributors": [],
+  "keywords": ["react"],
   "dependencies": {
-    "@material-ui/core": "^3.3.2",
+    "@material-ui/core": "^3.7.1",
     "@material-ui/icons": "^3.0.1",
     "axios": "^0.18.0",
+    "classnames": "^2.2.6",
     "eslint-config-airbnb": "17.1.0",
-    "node-sass": "^4.10.0",
+    "loaders.css": "^0.1.2",
+    "node-sass": "^4.11.0",
     "prop-types": "^15.6.2",
-    "react": "^16.7.0-alpha.0",
-    "react-dom": "^16.7.0-alpha.0",
-    "react-loader": "^2.4.5",
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2",
+    "react-loaders": "^3.0.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1"
+    "react-scripts": "2.1.3",
+    "reactn": "^0.1.9"
   },
   "scripts": {
-    "start": "NODE_PATH=src react-scripts start",
+    "start": "react-scripts start",
     "build": "NODE_PATH=src react-scripts build",
     "test": "NODE_PATH=src react-scripts test",
     "eject": "NODE_PATH=src react-scripts eject",
     "lint": "eslint '**/*.{js,jsx}' --quiet",
     "lint-fix": "eslint '**/*.{js,jsx}' --quiet --fix"
   },
-  "proxy": "https://localhost:5001",
-  "eslintConfig": {
-    "extends": "react-app"
-  },
+  "proxy": "https://clubsystemapi.herokuapp.com",
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -38,5 +47,68 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.0"
+  },
+  "eslintConfig": {
+    "extends": "airbnb",
+    "rules": {
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ],
+      "react/prop-types": 0,
+      "react/forbid-prop-types": 0,
+      "no-console": "off",
+      "comma-dangle": "off",
+      "no-return-assign": "off",
+      "no-param-reassign": "off",
+      "jsx-a11y/label-has-associated-control": [
+        "error",
+        {
+          "required": {
+            "some": [
+              "nesting",
+              "id"
+            ]
+          }
+        }
+      ],
+      "jsx-a11y/label-has-for": [
+        "error",
+        {
+          "required": {
+            "some": [
+              "nesting",
+              "id"
+            ]
+          }
+        }
+      ],
+      "no-confusing-arrow": "off",
+      "implicit-arrow-linebreak": "off",
+      "react/jsx-closing-bracket-location": "off",
+      "react/jsx-wrap-multilines": "off",
+      "max-len": [
+        "error",
+        {
+          "code": 200
+        }
+      ]
+    },
+    "env": {
+      "browser": true,
+      "node": true
+    }
+  },
+  "babel": {
+    "plugins": [
+      [
+        "babel-plugin-root-import"
+      ]
+    ]
   }
 }

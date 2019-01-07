@@ -1,0 +1,14 @@
+.default {
+  display: flex;
+  color: #61dafb;
+  padding: 5px;
+}
+
+.nav-item {
+  border: 1px solid black;
+  margin: 10px auto;
+}
+
+.sign-out-button {
+  color: #fff;
+}
