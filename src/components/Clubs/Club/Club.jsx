@@ -8,13 +8,11 @@ import classNames from 'classnames';
 import styles from './club.module.css';
 
 const Club = (props) => {
-  console.log(props);
   const { club } = props;
   const clubStyle = styles.club;
   const gridBox = classNames('col-xs-12 card bg-light m-3', clubStyle);
 
   function clubClickHandler(id, event) {
-    console.log(event);
     if (event) {
       if (event.key === 'Enter') {
         props.history.push({
@@ -34,7 +32,7 @@ const Club = (props) => {
   const date = `${club.createdDate.getFullYear()}/${(club.createdDate.getMonth() + 1)}/${(club.createdDate.getUTCDate())}`;
 
   return (
-    <div role="button" tabIndex={0} onKeyPress={event => clubClickHandler(club.id, event)} onClick={() => clubClickHandler(club.id)} className={gridBox}>
+    <div className={gridBox}>
       <div className="card-body">
         <h5 className="card-title">
           {club.name}
@@ -47,7 +45,7 @@ const Club = (props) => {
           {club.universityName}
         </p>
       </div>
-      <Button variant="contained" color="primary" className={styles.joinButton} onClick={() => console.log('onClick')}>
+      <Button variant="contained" color="primary" className={styles.joinButton} onClick={() => clubClickHandler(club.id)}>
         Join Club
       </Button>
     </div>
