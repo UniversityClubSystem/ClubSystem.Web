@@ -15,7 +15,7 @@ import classNames from 'classnames';
 
 import styles from './new-post.module.css';
 
-const NewPost = () => {
+const NewPost = (props) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [postVisibility, setPostVisibility] = useState(true);
@@ -50,6 +50,7 @@ const NewPost = () => {
       })
       .then(() => {
         setLoaderStatus(true);
+        props.history.push('/dashboard');
       })
       .catch((error) => {
         setLoaderStatus(true);

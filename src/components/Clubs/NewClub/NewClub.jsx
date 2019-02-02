@@ -11,11 +11,11 @@ import axios from 'axios';
 
 import styles from './new-club.module.css';
 
-const NewClub = () => {
+const NewClub = (props) => {
   const [name, setName] = useState('');
   const [universityName, setUniversityName] = useState('');
   const universityNames = [{ id: 1, name: 'Kocaeli University' }, { id: 2, name: 'Bogazici University' }];
-  const token = window.localStorage.getItem('token');
+  const token = localStorage.getItem('token');
 
   function handleSave() {
     axios
@@ -24,8 +24,8 @@ const NewClub = () => {
         { name, universityName },
         { headers: { Authorization: `Bearer ${token}` } }
       )
-      .then((response) => {
-        console.log('response:', response);
+      .then(() => {
+        props.history.push('/clubs');
       });
   }
 
