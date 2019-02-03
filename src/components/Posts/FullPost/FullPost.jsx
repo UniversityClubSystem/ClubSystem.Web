@@ -18,8 +18,8 @@ function Transition(props) {
 }
 
 const FullPost = props => {
-  const { location } = props;
-  const { post } = location.state;
+  const {location} = props;
+  const {post} = location.state;
   const token = localStorage.getItem('token');
 
   const [open, setOpen] = useState(false);
