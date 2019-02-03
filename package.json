@@ -52,6 +52,8 @@
     "eslint-plugin-jsx-a11y": "^6.2.0",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.3",
     "prettier": "^1.16.4"
   },
   "eslintConfig": {
@@ -76,13 +78,27 @@
       "react/prop-types": "off",
       "react/forbid-prop-types": "off",
       "react/require-default-props": "off",
-      "no-return-assign": [2, "except-parens"]
+      "no-return-assign": [
+        2,
+        "except-parens"
+      ]
     }
   },
   "prettier": {
     "singleQuote": true,
     "trailingComma": "all",
     "printWidth": 150
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "babel": {
     "plugins": [
