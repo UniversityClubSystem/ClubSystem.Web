@@ -17,7 +17,7 @@ const styles = theme => ({
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
-    marginTop: theme.spacing.unit * 10
+    marginTop: theme.spacing.unit * 10,
   },
   form: {
     display: 'flex',
@@ -33,7 +33,7 @@ const styles = theme => ({
   },
   title: {
     fontSize: 20,
-    textTransform: 'italic'
+    textTransform: 'italic',
   },
   name: {
     marginLeft: theme.spacing.unit,
@@ -56,7 +56,7 @@ const styles = theme => ({
     height: 40,
   },
   resetPassword: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
   },
   loader: {
     position: 'fixed',
@@ -68,11 +68,11 @@ const styles = theme => ({
     zIndex: 9999,
   },
   invalidPassword: {
-    color: 'red'
-  }
+    color: 'red',
+  },
 });
 
-const SignIn = (props) => {
+const SignIn = props => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginResponse, setLoginResponse] = useState({ ok: true });
@@ -90,17 +90,20 @@ const SignIn = (props) => {
   function handleLogin() {
     const user = { username, passwordHash: password };
     setLoaded(false);
-    axios.post('/api/user/login', user).then((response) => {
-      setLoaded(true);
-      setLoginResponse(response);
-      saveTokenToLocalStorage(response.data);
-      if (response.status === 200) {
-        setIsSignedIn(true);
-      }
-    }).catch((error) => {
-      setLoginResponse(error);
-      setLoaded(true);
-    });
+    axios
+      .post('/api/user/login', user)
+      .then(response => {
+        setLoaded(true);
+        setLoginResponse(response);
+        saveTokenToLocalStorage(response.data);
+        if (response.status === 200) {
+          setIsSignedIn(true);
+        }
+      })
+      .catch(error => {
+        setLoginResponse(error);
+        setLoaded(true);
+      });
   }
 
   function onKeyPress(event) {
@@ -119,14 +122,7 @@ const SignIn = (props) => {
       <form className={classes.form}>
         <Loader type="ball-pulse" active={!loaded} />
         <p className={classes.title}>Login</p>
-        <TextField
-          id="name"
-          label="Name"
-          className={classes.name}
-          value={username}
-          onChange={e => setUsername(e.target.value)}
-          margin="normal"
-        />
+        <TextField id="name" label="Name" className={classes.name} value={username} onChange={e => setUsername(e.target.value)} margin="normal" />
         <TextField
           id="password"
           label="Password"
@@ -137,11 +133,7 @@ const SignIn = (props) => {
           onKeyPress={ev => onKeyPress(ev)}
           margin="normal"
         />
-        {
-          !loginResponse.ok
-            ? <p className={classes.invalidPassword}>Invalid email or password</p>
-            : null
-        }
+        {!loginResponse.ok ? <p className={classes.invalidPassword}>Invalid email or password</p> : null}
         <Button variant="contained" color="primary" className={classes.button} onClick={handleLogin}>
           Login
         </Button>
@@ -155,7 +147,7 @@ const SignIn = (props) => {
 
 SignIn.propTypes = {
   classes: PropTypes.object.isRequired,
-  location: PropTypes.object
+  location: PropTypes.object,
 };
 
 export default withStyles(styles)(SignIn);

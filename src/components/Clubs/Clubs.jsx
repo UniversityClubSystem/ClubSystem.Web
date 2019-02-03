@@ -16,7 +16,7 @@ const Clubs = () => {
     setLoaded(false);
     axios
       .get('/api/club', { headers: { Authorization: `Bearer ${token}` } })
-      .then((clubsResponse) => {
+      .then(clubsResponse => {
         setClubs(clubsResponse.data);
         setLoaded(true);
       })

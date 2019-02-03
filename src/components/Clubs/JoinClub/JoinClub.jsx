@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import styles from './join-club.module.css';
 
-const JoinClub = (props) => {
+const JoinClub = props => {
   console.log(props);
   const { location } = props;
   if (location.state === undefined) return null;
@@ -16,7 +16,7 @@ const JoinClub = (props) => {
   function joinClub() {
     axios
       .post('/api/club/join', { ClubId: club.id }, { headers: { Authorization: `Bearer ${token}` } })
-      .then((response) => {
+      .then(response => {
         console.log(response);
       })
       .catch(() => {

@@ -16,7 +16,7 @@ const Posts = () => {
     setLoaded(false);
     axios
       .get('/api/post', { headers: { Authorization: `Bearer ${token}` } })
-      .then((postsResponse) => {
+      .then(postsResponse => {
         setPosts(postsResponse.data);
         setLoaded(true);
       })
@@ -26,15 +26,11 @@ const Posts = () => {
   }, []);
 
   const NoPostFound = <div className="mt-2">No Post Found!</div>;
-  const RenderPosts = posts.map(post => (
-    <SimplePost key={post.id} post={post} />
-  ));
+  const RenderPosts = posts.map(post => <SimplePost key={post.id} post={post} />);
 
   return (
     <>
-      <div className={styles['posts-container']}>
-        {posts.length === 0 ? NoPostFound : RenderPosts}
-      </div>
+      <div className={styles['posts-container']}>{posts.length === 0 ? NoPostFound : RenderPosts}</div>
       <div className={styles.loader}>
         <Loader type="ball-pulse" active={!loaded} />
       </div>

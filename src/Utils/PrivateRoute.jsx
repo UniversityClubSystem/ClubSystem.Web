@@ -10,7 +10,7 @@ const checkIsSignedIn = (isSignedIn, ChildComponent, props) => {
     <Redirect
       to={{
         pathname: '/signIn',
-        state: { from: location }
+        state: { from: location },
       }}
     />
   );
@@ -19,12 +19,7 @@ const checkIsSignedIn = (isSignedIn, ChildComponent, props) => {
 const PrivateRoute = ({ component, ...rest }) => {
   const [isSignedIn] = useGlobal('isSignedIn');
 
-  return (
-    <Route
-      {...rest}
-      render={props => checkIsSignedIn(isSignedIn, component, props)}
-    />
-  );
+  return <Route {...rest} render={props => checkIsSignedIn(isSignedIn, component, props)} />;
 };
 
 export default PrivateRoute;

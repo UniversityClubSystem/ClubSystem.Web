@@ -1,17 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const NavigationItem = (props) => {
+const NavigationItem = props => {
   const { link } = props;
-  return (
-    <p>
-      {link}
-    </p>
-  );
+  return <p>{link}</p>;
 };
 
 NavigationItem.propTypes = {
-  link: PropTypes.string.isRequired
+  link: PropTypes.string.isRequired,
 };
 
 export default NavigationItem;

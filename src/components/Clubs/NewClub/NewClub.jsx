@@ -11,22 +11,16 @@ import axios from 'axios';
 
 import styles from './new-club.module.css';
 
-const NewClub = (props) => {
+const NewClub = props => {
   const [name, setName] = useState('');
   const [universityName, setUniversityName] = useState('');
   const universityNames = [{ id: 1, name: 'Kocaeli University' }, { id: 2, name: 'Bogazici University' }];
   const token = localStorage.getItem('token');
 
   function handleSave() {
-    axios
-      .post(
-        '/api/club',
-        { name, universityName },
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
-      .then(() => {
-        props.history.push('/clubs');
-      });
+    axios.post('/api/club', { name, universityName }, { headers: { Authorization: `Bearer ${token}` } }).then(() => {
+      props.history.push('/clubs');
+    });
   }
 
   return (
@@ -60,21 +54,14 @@ const NewClub = (props) => {
                   <em>None</em>
                 </MenuItem>
                 {universityNames.map(_university => (
-                  <MenuItem
-                    key={_university.id}
-                    value={_university.name}>
+                  <MenuItem key={_university.id} value={_university.name}>
                     {/* TODO: üniversite bilgileri api'den alınacak şekilde ayarlandıktan sonra value={_university.id} şeklinde düzeltilmeli */}
                     {_university.name}
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
-            <Button
-              className={styles.button}
-              variant="contained"
-              color="primary"
-              onClick={handleSave}
-            >
+            <Button className={styles.button} variant="contained" color="primary" onClick={handleSave}>
               Save Club
             </Button>
           </form>

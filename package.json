@@ -14,12 +14,11 @@
     "react"
   ],
   "dependencies": {
-    "@material-ui/core": "^3.9.0",
+    "@material-ui/core": "^3.9.1",
     "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
     "classnames": "^2.2.6",
-    "eslint-config-airbnb": "17.1.0",
     "loaders.css": "^0.1.2",
     "node-sass": "^4.11.0",
     "prop-types": "^15.6.2",
@@ -47,65 +46,43 @@
   ],
   "devDependencies": {
     "babel-plugin-root-import": "^6.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.12.3"
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.11.1",
+    "prettier": "^1.16.4"
   },
   "eslintConfig": {
-    "extends": "airbnb",
-    "rules": {
-      "react/jsx-filename-extension": [
-        1,
-        {
-          "extensions": [
-            ".js",
-            ".jsx"
-          ]
-        }
-      ],
-      "react/prop-types": 0,
-      "react/forbid-prop-types": 0,
-      "no-console": "off",
-      "comma-dangle": "off",
-      "no-return-assign": "off",
-      "no-param-reassign": "off",
-      "jsx-a11y/label-has-associated-control": [
-        "error",
-        {
-          "required": {
-            "some": [
-              "nesting",
-              "id"
-            ]
-          }
-        }
-      ],
-      "jsx-a11y/label-has-for": [
-        "error",
-        {
-          "required": {
-            "some": [
-              "nesting",
-              "id"
-            ]
-          }
-        }
-      ],
-      "no-confusing-arrow": "off",
-      "implicit-arrow-linebreak": "off",
-      "react/jsx-closing-bracket-location": "off",
-      "react/jsx-wrap-multilines": "off",
-      "max-len": [
-        "error",
-        {
-          "code": 200
-        }
-      ]
-    },
     "env": {
-      "browser": true,
-      "node": true
+      "jest": true,
+      "browser": true
+    },
+    "extends": [
+      "airbnb",
+      "plugin:prettier/recommended",
+      "prettier/react"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error"
+      ],
+      "no-console": "off",
+      "react/jsx-filename-extension": "off",
+      "react/prop-types": "off",
+      "react/forbid-prop-types": "off",
+      "react/require-default-props": "off",
+      "no-return-assign": [2, "except-parens"]
     }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 150
   },
   "babel": {
     "plugins": [

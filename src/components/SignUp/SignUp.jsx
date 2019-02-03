@@ -33,9 +33,9 @@ const SignUp = () => {
       username,
       email,
       passwordHash: password,
-      userClubs
+      userClubs,
     };
-    axios.post('/api/user', user).then((response) => {
+    axios.post('/api/user', user).then(response => {
       console.log(response);
       if (response.status === 200) setIsSignedIn(true);
     });
@@ -49,42 +49,48 @@ const SignUp = () => {
     <div className="d-flex justify-content-center pt-5 p-3 w-100">
       <form className="d-flex flex-column w-25">
         <div className="form-group py-2">
-          <label htmlFor="inputName">Username</label>
-          <input
-            type="text"
-            className="form-control"
-            value={username}
-            onChange={handleChange}
-            name="name"
-            id="inputName"
-            aria-describedby="nameHelp"
-            placeholder="Enter name"
-          />
+          <label htmlFor="inputName">
+            Username
+            <input
+              type="text"
+              className="form-control"
+              value={username}
+              onChange={handleChange}
+              name="name"
+              id="inputName"
+              aria-describedby="nameHelp"
+              placeholder="Enter name"
+            />
+          </label>
         </div>
         <div className="form-group py-2">
-          <label htmlFor="inputEmail">Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            value={email}
-            onChange={handleChange}
-            name="email"
-            id="inputEmail"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-          />
+          <label htmlFor="inputEmail">
+            Email address
+            <input
+              type="email"
+              className="form-control"
+              value={email}
+              onChange={handleChange}
+              name="email"
+              id="inputEmail"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+            />
+          </label>
         </div>
         <div className="form-group py-2">
-          <label htmlFor="inputPassword">Password</label>
-          <input
-            type="password"
-            className="form-control"
-            value={password}
-            onChange={handleChange}
-            name="password"
-            id="inputPassword"
-            placeholder="Password"
-          />
+          <label htmlFor="inputPassword">
+            Password
+            <input
+              type="password"
+              className="form-control"
+              value={password}
+              onChange={handleChange}
+              name="password"
+              id="inputPassword"
+              placeholder="Password"
+            />
+          </label>
         </div>
         <button type="button" className="btn btn-primary" onClick={submit}>
           Submit

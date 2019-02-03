@@ -15,7 +15,7 @@ import classNames from 'classnames';
 
 import styles from './new-post.module.css';
 
-const NewPost = (props) => {
+const NewPost = props => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [postVisibility, setPostVisibility] = useState(true);
@@ -28,13 +28,13 @@ const NewPost = (props) => {
     setLoaderStatus(false);
     axios
       .get('/api/club/byUser/current', {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => {
+      .then(response => {
         setClubs(response.data);
         setLoaderStatus(true);
       })
-      .catch((error) => {
+      .catch(error => {
         setLoaderStatus(true);
         alert(error);
       });
@@ -46,13 +46,13 @@ const NewPost = (props) => {
     setLoaderStatus(false);
     axios
       .post('/api/post', newPost, {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
         setLoaderStatus(true);
         props.history.push('/dashboard');
       })
-      .catch((error) => {
+      .catch(error => {
         setLoaderStatus(true);
         alert(error);
       });
@@ -92,13 +92,7 @@ const NewPost = (props) => {
           margin="normal"
         />
         <FormControlLabel
-          control={
-            <Switch
-              checked={postVisibility}
-              onChange={e => setPostVisibility(e.target.checked)}
-              color="primary"
-            />
-          }
+          control={<Switch checked={postVisibility} onChange={e => setPostVisibility(e.target.checked)} color="primary" />}
           label="Public"
         />
         <FormControl className={styles.clubFormControl}>
@@ -113,20 +107,13 @@ const NewPost = (props) => {
             }}
           >
             {clubs.map(_club => (
-              <MenuItem
-                key={_club.id}
-                value={_club.id}>
+              <MenuItem key={_club.id} value={_club.id}>
                 {_club.name}
               </MenuItem>
             ))}
           </Select>
         </FormControl>
-        <Button
-          className={styles.button}
-          variant="contained"
-          color="primary"
-          onClick={handleSave}
-        >
+        <Button className={styles.button} variant="contained" color="primary" onClick={handleSave}>
           Save Post
         </Button>
       </form>
