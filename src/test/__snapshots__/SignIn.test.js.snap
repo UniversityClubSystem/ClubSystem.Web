@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignIn should render correctly 1`] = `
+<SignIn
+  classes={
+    Object {
+      "button": "SignIn-button-6",
+      "container": "SignIn-container-1",
+      "form": "SignIn-form-2",
+      "invalidPassword": "SignIn-invalidPassword-9",
+      "loader": "SignIn-loader-8",
+      "name": "SignIn-name-4",
+      "password": "SignIn-password-5",
+      "resetPassword": "SignIn-resetPassword-7",
+      "title": "SignIn-title-3",
+    }
+  }
+/>
+`;
