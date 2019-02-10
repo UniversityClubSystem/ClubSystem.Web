@@ -17,7 +17,7 @@ const styles = theme => ({
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
-    marginTop: theme.spacing.unit * 10,
+    marginTop: theme.spacing.unit * 17.5,
   },
   form: {
     display: 'flex',
@@ -27,7 +27,6 @@ const styles = theme => ({
     flexWrap: 'wrap',
     width: 380,
     height: 370,
-    // background: '#D3D3D3',
     border: '1px solid #DFE0E2',
     borderRadius: 10,
   },
@@ -77,11 +76,11 @@ const SignIn = props => {
   const [password, setPassword] = useState('');
   const [loginResponse, setLoginResponse] = useState({ ok: true });
   const [loaded, setLoaded] = useState(true);
+  const [formDisabled, setFormDisabled] = useState(false);
   const { classes, location } = props;
 
   const { from } = location.state || { from: { pathname: '/dashboard' } };
   const [isSignedIn, setIsSignedIn] = useGlobal('isSignedIn');
-  console.log('global state - isSignedIn:', isSignedIn);
 
   function saveTokenToLocalStorage(token) {
     window.localStorage.setItem('token', token);
@@ -90,10 +89,12 @@ const SignIn = props => {
   function handleLogin() {
     const user = { username, passwordHash: password };
     setLoaded(false);
+    setFormDisabled(true);
     axios
       .post('/api/user/login', user)
       .then(response => {
         setLoaded(true);
+        setFormDisabled(false);
         setLoginResponse(response);
         saveTokenToLocalStorage(response.data);
         if (response.status === 200) {
@@ -103,6 +104,7 @@ const SignIn = props => {
       .catch(error => {
         setLoginResponse(error);
         setLoaded(true);
+        setFormDisabled(false);
       });
   }
 
@@ -122,19 +124,29 @@ const SignIn = props => {
       <form className={classes.form}>
         <Loader type="ball-pulse" active={!loaded} />
         <p className={classes.title}>Login</p>
-        <TextField id="name" label="Name" className={classes.name} value={username} onChange={e => setUsername(e.target.value)} margin="normal" />
+        <TextField
+          id="name"
+          label="Name"
+          className={classes.name}
+          value={username}
+          disabled={formDisabled}
+          onChange={e => setUsername(e.target.value)}
+          onKeyPress={ev => onKeyPress(ev)}
+          margin="normal"
+        />
         <TextField
           id="password"
           label="Password"
           type="password"
           className={classes.password}
           value={password}
+          disabled={formDisabled}
           onChange={e => setPassword(e.target.value)}
           onKeyPress={ev => onKeyPress(ev)}
           margin="normal"
         />
         {!loginResponse.ok ? <p className={classes.invalidPassword}>Invalid email or password</p> : null}
-        <Button variant="contained" color="primary" className={classes.button} onClick={handleLogin}>
+        <Button className={classes.button} variant="contained" color="primary" disabled={formDisabled} onClick={handleLogin}>
           Login
         </Button>
         <Link to="resetPassword" className={classes.resetPassword}>
