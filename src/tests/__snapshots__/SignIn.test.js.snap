@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SignIn should render correctly 1`] = `
+exports[`<SignIn> should render correctly 1`] = `
 <SignIn
   classes={
     Object {
