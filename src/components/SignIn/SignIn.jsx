@@ -78,11 +78,8 @@ const SignIn = props => {
   const [loaded, setLoaded] = useState(true);
   const [formDisabled, setFormDisabled] = useState(false);
   const { classes, location } = props;
-  let from;
 
-  if (location) {
-    from = location.state || { from: { pathname: '/dashboard' } };
-  }
+  const { from } = location ? location.state || { from: { pathname: '/dashboard' } } : undefined;
   const [isSignedIn, setIsSignedIn] = useGlobal('isSignedIn');
 
   function saveTokenToLocalStorage(token) {
