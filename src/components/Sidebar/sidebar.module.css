@@ -1,4 +1,7 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   background-color: rgba(0, 123, 255, 0.1);
   height: 93vh;
   width: 15rem;
@@ -6,11 +9,12 @@
   z-index: 1;
   top: 4rem;
   left: 0;
-  /* overflow-x: hidden; Disable horizontal scroll */
+  overflow-x: hidden;
   padding-top: 20px;
 }
 
-.title {
+.club {
+  margin: 0.5rem 0;
   font-size: 1rem;
   font-style: italic;
 }

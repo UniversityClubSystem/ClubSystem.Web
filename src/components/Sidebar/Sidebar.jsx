@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import Loader from 'react-loaders';
 import axios from 'axios';
 
@@ -36,7 +38,9 @@ const Sidebar = () => {
       </p>
 
       {clubs.map(club => (
-        <p key={club.id}>{club.name}</p>
+        <Link className={styles.club} to={`/club/${club.id}`} key={club.id}>
+          {club.name}
+        </Link>
       ))}
     </div>
   );
