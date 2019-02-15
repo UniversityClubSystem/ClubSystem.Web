@@ -1,11 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+
+import { render } from 'react-testing-library';
+
 import SignIn from '../components/SignIn/SignIn';
 
-describe('<SignIn>', () => {
-  it('should render correctly', () => {
-    const component = shallow(<SignIn />);
-
-    expect(component).toMatchSnapshot();
-  });
+it('should render correctly', () => {
+  const { getByText } = render(<SignIn />);
+  expect(getByText('Login')).toBeInTheDocument();
 });

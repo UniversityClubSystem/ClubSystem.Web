@@ -27,8 +27,9 @@ const styles = theme => ({
     flexWrap: 'wrap',
     width: 380,
     height: 370,
-    border: '1px solid #DFE0E2',
+    border: '1px solid #BBBBBB',
     borderRadius: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
   },
   title: {
     fontSize: 20,
@@ -79,7 +80,7 @@ const SignIn = props => {
   const [formDisabled, setFormDisabled] = useState(false);
   const { classes, location } = props;
 
-  const { from } = location ? location.state || { from: { pathname: '/dashboard' } } : undefined;
+  const { from } = location ? location.state || { from: { pathname: '/dashboard', test: '1234' } } : undefined;
   const [isSignedIn, setIsSignedIn] = useGlobal('isSignedIn');
 
   function saveTokenToLocalStorage(token) {

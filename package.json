@@ -1,7 +1,7 @@
 {
   "name": "club-system.web",
   "description": "Club System Web UI",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "license": "GPL-3.0",
   "author": {
@@ -46,21 +46,18 @@
   ],
   "devDependencies": {
     "babel-plugin-root-import": "^6.1.0",
-    "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.9.1",
-    "enzyme-to-json": "^3.3.5",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.0.0",
-    "jest-enzyme": "^7.0.1",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
+    "react-testing-library": "^5.8.0",
+    "jest-dom": "^3.1.1",
     "husky": "^1.3.1",
     "lint-staged": "^8.1.3",
     "prettier": "^1.16.4",
-    "puppeteer": "^1.12.2",
-    "react-test-renderer": "^16.8.1"
+    "puppeteer": "^1.12.2"
   },
   "eslintConfig": {
     "env": {
@@ -112,11 +109,6 @@
       [
         "babel-plugin-root-import"
       ]
-    ]
-  },
-  "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
     ]
   }
 }

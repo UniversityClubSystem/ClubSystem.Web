@@ -9,3 +9,22 @@
 .container:hover {
   /*TODO: hover effect*/
 }
+
+.post {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 11rem;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 1px 0 rgba(31, 35, 46, 0.15);
+}
+
+.post:hover {
+  transform: translate(0px, -2px);
+  box-shadow: 0 15px 45px -10px rgba(10, 16, 34, 0.2);
+}

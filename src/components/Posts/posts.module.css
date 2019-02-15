@@ -1,7 +1,9 @@
 .posts-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  max-height: 85vh;
+  min-width: 35rem;
+  scroll-behavior: smooth;
 }
 
 .loader {
