@@ -31,11 +31,11 @@ const App = () => {
             <PrivateRoute path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/users" component={User} />
             <PrivateRoute exact path="/clubs" component={Clubs} />
+            <PrivateRoute path="/post/new" component={NewPost} />
             <PrivateRoute path="/post/:id" component={FullPost} />
-            <PrivateRoute path="/posts/new" component={NewPost} />
-            <PrivateRoute path="/clubs/new" component={NewClub} />
-            <PrivateRoute path="/clubs/:id/join" component={JoinClub} />
-            <PrivateRoute exact path="/clubs/:id" component={FullClub} />
+            <PrivateRoute path="/club/new" component={NewClub} />
+            <PrivateRoute path="/club/:id/join" component={JoinClub} />
+            <PrivateRoute exact path="/club/:id" component={FullClub} />
             <PrivateRoute path="/private1" component={private1} />
             <PrivateRoute path="/private2" component={private2} />
             <Route path="*" render={() => <p>Not Found :(</p>} />

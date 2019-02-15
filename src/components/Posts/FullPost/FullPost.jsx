@@ -48,8 +48,6 @@ const FullPost = props => {
     }
   }
 
-  console.log('props:', props);
-
   // TODO: make util function for date convert
   post.createdDate = new Date(Date.parse(post.createdDate));
   const date = `${post.createdDate.getFullYear()}/${post.createdDate.getMonth() + 1}/${post.createdDate.getUTCDate()}`;

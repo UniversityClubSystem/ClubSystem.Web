@@ -37,12 +37,12 @@ const NavigationItems = () => {
           <Link className="nav-item nav-link" to="/users">
             Users
           </Link>
-          <Link className="nav-item nav-link" to="/clubs/new">
+          <Link className="nav-item nav-link" to="/club/new">
             <Button variant="contained" color="primary">
               New Club
             </Button>
           </Link>
-          <Link className="nav-item nav-link" to="/posts/new">
+          <Link className="nav-item nav-link" to="/post/new">
             <Button variant="contained" color="primary">
               New Post
             </Button>

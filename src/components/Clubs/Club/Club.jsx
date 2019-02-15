@@ -16,13 +16,13 @@ const Club = props => {
     if (event) {
       if (event.key === 'Enter') {
         props.history.push({
-          pathname: `/clubs/${id}/join`,
+          pathname: `/club/${id}/join`,
           state: { club },
         });
       }
     } else {
       props.history.push({
-        pathname: `/clubs/${id}/join`,
+        pathname: `/club/${id}/join`,
         state: { club },
       });
     }
