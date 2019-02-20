@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import axios from 'axios';
 import Loader from 'react-loaders';
 
 import SimplePost from './SimplePost/SimplePost';
 
+import postService from '../../services/post';
+
 import styles from './posts.module.css';
 
 const Posts = () => {
-  const token = window.localStorage.getItem('token');
   const [posts, setPosts] = useState([]);
   const [loaded, setLoaded] = useState(true);
 
-  useEffect(() => {
+  const getPost = async () => {
     setLoaded(false);
-    axios
-      .get('/api/post', { headers: { Authorization: `Bearer ${token}` } })
-      .then(postsResponse => {
-        setPosts(postsResponse.data);
-        setLoaded(true);
-      })
-      .catch(() => {
-        setLoaded(true);
-      });
+    const response = await postService.list();
+    if (response.data) {
+      setPosts(response.data);
+      setLoaded(true);
+    }
+  };
+
+  useEffect(() => {
+    getPost();
   }, []);
 
   const NoPostFound = <div className="mt-2">No Post Found!</div>;

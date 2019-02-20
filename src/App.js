@@ -1,12 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { setGlobal } from 'reactn';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import { SignIn, Dashboard, SignUp, ResetPassword, User, FullClub, Clubs, NewPost, JoinClub, NewClub } from './components/index';
+import { Clubs, Dashboard, FullClub, JoinClub, NewClub, NewPost, ResetPassword, SignIn, SignUp, User } from './components/index';
 import Layout from './Layout/Layout';
 import FullPost from './components/Posts/FullPost/FullPost';
-import PrivateRoute from './Utils/PrivateRoute';
+import PrivateRoute from './utils/PrivateRoute';
 
 const private1 = () => <p>private1</p>;
 
