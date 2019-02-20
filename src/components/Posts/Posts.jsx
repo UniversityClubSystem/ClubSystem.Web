@@ -14,7 +14,7 @@ const Posts = () => {
 
   const getPost = async () => {
     setLoaded(false);
-    const response = await postService.list();
+    const response = await postService.postFeed();
     if (response.data) {
       setPosts(response.data);
       setLoaded(true);

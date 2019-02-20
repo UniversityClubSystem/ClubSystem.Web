@@ -19,8 +19,8 @@ const PostService = {
     return http.delete(`${baseUrl}/${id}`);
   },
 
-  postFeed(id) {
-    return http.get(`${baseUrl}/postFeed/${id}`);
+  postFeed() {
+    return http.get(`${baseUrl}/postFeed`);
   },
 };
 

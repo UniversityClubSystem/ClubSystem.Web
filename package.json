@@ -1,7 +1,7 @@
 {
   "name": "club-system.web",
   "description": "Club System Web UI",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": true,
   "license": "GPL-3.0",
   "author": {
