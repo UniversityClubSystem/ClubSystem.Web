@@ -1,5 +1,6 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+
+import useReactRouter from 'use-react-router';
 
 import Button from '@material-ui/core/Button';
 
@@ -9,19 +10,21 @@ import styles from './club.module.css';
 
 const Club = props => {
   const { club } = props;
+  const { history } = useReactRouter();
+
   const clubStyle = styles.club;
   const gridBox = classNames('col-xs-12 card bg-light m-3', clubStyle);
 
   function clubClickHandler(id, event) {
     if (event) {
       if (event.key === 'Enter') {
-        props.history.push({
+        history.push({
           pathname: `/club/${id}/join`,
           state: { club },
         });
       }
     } else {
-      props.history.push({
+      history.push({
         pathname: `/club/${id}/join`,
         state: { club },
       });
@@ -48,4 +51,4 @@ const Club = props => {
   );
 };
 
-export default withRouter(Club);
+export default Club;

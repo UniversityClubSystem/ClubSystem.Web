@@ -1,22 +1,25 @@
 import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
+
+import useReactRouter from 'use-react-router';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import styles from './simplePost.module.css';
 
 const SimplePost = props => {
+  const { history } = useReactRouter();
   const { post } = props;
 
   function postClickHandler(id, event) {
     if (event) {
       if (event.key === 'Enter') {
-        props.history.push({
+        history.push({
           pathname: `/post/${id}`,
           state: { post },
         });
       }
     } else {
-      props.history.push({
+      history.push({
         pathname: `/post/${id}`,
         state: { post },
       });
@@ -48,7 +51,6 @@ const SimplePost = props => {
 
 SimplePost.propTypes = {
   post: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
 };
 
-export default withRouter(SimplePost);
+export default SimplePost;
