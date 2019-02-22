@@ -29,11 +29,11 @@ const Sidebar = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.loader}>
+      <div>
         <Loader type="ball-pulse" active={!loaderStatus} />
       </div>
 
-      <p className={styles.title}>
+      <p>
         <strong>Your Clubs</strong>
       </p>
 

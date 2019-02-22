@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 import axios from 'axios';
 
@@ -93,24 +92,6 @@ const FullPost = props => {
       </div>
     </div>
   );
-};
-
-FullPost.propTypes = {
-  location: PropTypes.shape({
-    state: PropTypes.shape({
-      post: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        content: PropTypes.string.isRequired,
-        clubId: PropTypes.string.isRequired,
-        clubName: PropTypes.string.isRequired,
-        createdDate: PropTypes.instanceOf(Date).isRequired,
-        id: PropTypes.string.isRequired,
-      }).isRequired,
-    }).isRequired,
-  }).isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func,
-  }).isRequired,
 };
 
 export default FullPost;

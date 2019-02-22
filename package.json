@@ -50,6 +50,7 @@
     "babel-plugin-root-import": "~6.1.0",
     "eslint-config-airbnb": "~17.1.0",
     "eslint-config-prettier": "~4.0.0",
+    "eslint-plugin-css-modules": "^2.11.0",
     "eslint-plugin-import": "~2.16.0",
     "eslint-plugin-jsx-a11y": "~6.2.1",
     "eslint-plugin-prettier": "~3.0.1",
@@ -72,7 +73,8 @@
       "prettier/react"
     ],
     "plugins": [
-      "prettier"
+      "prettier",
+      "css-modules"
     ],
     "rules": {
       "prettier/prettier": [
@@ -88,7 +90,9 @@
         2,
         "except-parens"
       ],
-      "import/no-extraneous-dependencies": "off"
+      "import/no-extraneous-dependencies": "off",
+      "css-modules/no-unused-class": [2, { "camelCase": true }],
+      "css-modules/no-undef-class": [2, { "camelCase": true }]
     }
   },
   "prettier": {
@@ -99,11 +103,14 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "npm build"
+      "pre-push": "npm run build"
     }
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"]
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "babel": {
     "plugins": [

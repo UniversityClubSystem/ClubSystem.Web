@@ -61,7 +61,7 @@ const NewClub = props => {
                 ))}
               </Select>
             </FormControl>
-            <Button className={styles.button} variant="contained" color="primary" onClick={handleSave}>
+            <Button variant="contained" color="primary" onClick={handleSave}>
               Save Club
             </Button>
           </form>

@@ -28,7 +28,7 @@ const Clubs = () => {
     <div className="d-flex text-center align-items-center flex-column">
       <h3 className={styles.title}>Clubs</h3>
 
-      <div className={styles.loader}>
+      <div>
         <Loader type="ball-pulse" active={!loaded} />
       </div>
 
